@@ -1,0 +1,19 @@
+<h1>Title: <%=@question.title%></h1>
+<p>Content:<br>
+  <%=@question.content%>
+<p>
+
+  <h2>Answers:</h2>
+    <%@question.answers.each do |answer|%>
+      <p>
+        <strong>Title:</strong>
+        <%=answer.title%>
+      </p>
+
+      <p>
+        <strong>Answer:</strong>
+        <%=answer.content%>
+      </p>
+    <%end%>
+
+<h1></h1>

@@ -1,0 +1,9 @@
+<h1>Listing all the motha fuckin' questions</h1>
+<ul>
+<% @questions.each do |question| %>
+  <li>
+    <h4><%=question.title%></h4>
+    <p><%=question.content%></p>
+  </li>
+<%end%>
+</ul>
