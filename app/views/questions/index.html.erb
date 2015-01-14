@@ -1,8 +1,12 @@
+<h1>Welcome to SteveOverflow</h1>
+
 <h1>Listing all the motha fuckin' questions</h1>
+
+<%=link_to 'Ask Question', new_question_path %>
 <ul>
 <% @questions.each do |question| %>
   <li>
-    <h4><%=question.title%></h4>
+    <h4><%=link_to question.title, question_path(question)%></h4>
     <p><%=question.content%></p>
   </li>
 <%end%>
