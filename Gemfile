@@ -17,7 +17,11 @@ gem 'capybara'
 
 gem 'shoulda-matchers'
 
+gem 'factory_girl_rails'
+
 gem 'factory_girl'
+
+gem 'faker'
 
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
