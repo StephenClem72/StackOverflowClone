@@ -3,7 +3,12 @@
   <%=@question.content%>
 <p>
 
+  <%=link_to 'Edit Question', edit_question_path(@question.id)%>
+  <%=link_to 'Delete Question', question_path(@question.id), method: :delete%>
+
   <h2>Answers:</h2>
+
+
     <%@question.answers.each do |answer|%>
       <p>
         <strong>Title:</strong>
