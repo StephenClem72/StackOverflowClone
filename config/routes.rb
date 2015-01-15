@@ -15,7 +15,16 @@ Rails.application.routes.draw do
     root 'questions#index'
 
     resources :questions do
-      resources :answers
+      member do
+        patch 'upvote'
+        patch 'downvote'
+      end
+      resources :answers do
+        member do
+          patch 'upvote'
+          patch 'downvote'
+        end
+      end
     end
 
     # root 'questions#index'

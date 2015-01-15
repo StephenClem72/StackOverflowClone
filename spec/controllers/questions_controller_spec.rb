@@ -97,10 +97,6 @@ RSpec.describe QuestionsController, :type => :controller do
       end
     end
 
-    context '#upvote' do
-
-
-
     end
   end
 end

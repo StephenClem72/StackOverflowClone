@@ -6,6 +6,19 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
 
+  def upvote
+    @answer = Answer.find(params[:id])
+    @answer.update_attributes(votes: @answer.votes + 1)
+    redirect_to :back
+  end
+
+  def downvote
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.update_attributes(votes: @answer.votes - 1)
+    redirect_to :back
+  end
+
   private
 
   def answer_params

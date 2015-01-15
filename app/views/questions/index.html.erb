@@ -6,8 +6,13 @@
 <ul>
 <% @questions.each do |question| %>
   <li>
+    <button><%=link_to '^', upvote_question_path(question), method: :patch%></button><br>
+    <%=question.votes%><br>
+    <button><%=link_to 'v', downvote_question_path(question), method: :patch%></button><br>
     <h4><%=link_to question.title, question_path(question)%></h4>
     <p><%=question.content%></p>
   </li>
 <%end%>
 </ul>
+
+<%=@quote%>

@@ -2,6 +2,8 @@
 <p>Content:<br>
   <%=@question.content%>
 <p>
+  <%=@question.votes%><br>
+
 
   <%=link_to 'Edit Question', edit_question_path(@question.id)%>
   <%=link_to 'Delete Question', question_path(@question.id), method: :delete%>
@@ -10,6 +12,10 @@
 
 
     <%@question.answers.each do |answer|%>
+
+      <button><%=link_to '^', upvote_question_answer_path(@question.id, answer), method: :patch%></button><br>
+      <%=answer.votes%><br>
+      <button><%=link_to 'v', downvote_question_answer_path(@question.id, answer), method: :patch%></button><br>
       <p>
         <strong>Title:</strong>
         <%=answer.title%>

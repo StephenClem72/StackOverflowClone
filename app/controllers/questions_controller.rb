@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @quote = ApplicationHelper.githubapi
+    @questions = Question.order("votes DESC").all
   end
 
   def new
@@ -38,6 +39,18 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     redirect_to questions_path
+  end
+
+  def upvote
+    @question = Question.find(params[:id])
+    @question.update_attributes(votes: @question.votes + 1)
+    redirect_to :back
+  end
+
+  def downvote
+    @question = Question.find(params[:id])
+    @question.update_attributes(votes: @question.votes - 1)
+    redirect_to :back
   end
 
 private
