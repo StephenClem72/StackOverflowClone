@@ -23761,3 +23761,50 @@ Processing by QuestionsController#new as HTML
   Rendered questions/_form.html.erb (3.3ms)
   Rendered questions/new.html.erb within layouts/application (5.2ms)
 Completed 200 OK in 105ms (Views: 104.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/questions" for ::1 at 2015-01-15 10:44:22 -0800
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IHzqXnfEtANAu4oMaQqB+50+nFq66MA1N3P/kgnQ6cIyNPVosAB97ebleVg+SURstezWRMJqt2zwORMERVFbrg==", "question"=>{"title"=>"sadsa", "content"=>"asdas?"}, "commit"=>"Save Question"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (19.0ms)[0m  [1mINSERT INTO "questions" ("title", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "sadsa"], ["content", "asdas?"], ["created_at", "2015-01-15 18:44:22.713930"], ["updated_at", "2015-01-15 18:44:22.713930"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/5
+Completed 302 Found in 40ms (ActiveRecord: 19.8ms)
+
+
+Started GET "/questions/5" for ::1 at 2015-01-15 10:44:22 -0800
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 5]]
+  Rendered answers/_new_answer_form.html.erb (2.0ms)
+  Rendered questions/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 105ms (Views: 102.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/answers-069e88c06b889877799890854d7f4c40.css?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/jquery-eb3e278249152b5b5d5170b73d9dbf52.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/questions-069e88c06b889877799890854d7f4c40.css?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/application-823e88bf1231c4323ee1d35731d8f1b6.css?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/turbolinks-924184401b7d116eadaaefc96895fa84.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/jquery_ujs-0b8f09cf5aec4ba1be1abd9f915c77e2.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/answers-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/questions-8f6eecd1178ef85964369ec66d33c4f1.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
+
+
+Started GET "/assets/application-18f10afd70767e0049304380ce89b979.js?body=1" for ::1 at 2015-01-15 10:44:22 -0800
