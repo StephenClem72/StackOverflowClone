@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
   def index
     @quote = ApplicationHelper.githubapi
+    @question = Question.new
     @questions = Question.order("votes DESC").all
   end
 
@@ -15,10 +16,13 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    if @question.save
-      redirect_to @question
-    else
-      render 'new'
+    respond_to do |format|
+      if @question.save
+        format.html {}
+        format.js   {}
+      else
+        format.html {render action: 'new'}
+      end
     end
   end
 
@@ -44,13 +48,21 @@ class QuestionsController < ApplicationController
   def upvote
     @question = Question.find(params[:id])
     @question.update_attributes(votes: @question.votes + 1)
-    redirect_to :back
+    respond_to do |format|
+      format.html {}
+      format.js   {}
+    end
+    # redirect_to :back
   end
 
   def downvote
     @question = Question.find(params[:id])
     @question.update_attributes(votes: @question.votes - 1)
-    redirect_to :back
+    respond_to do |format|
+      format.html {}
+      format.js   {}
+    end
+    # redirect_to :back
   end
 
 private

@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <button><%=link_to '^', upvote_question_path(@question), method: :patch%></button><br>
+    <button><%=link_to 'v', downvote_question_path(@question), method: :patch%></button>
+  </td>
+  <td id='votes<%=@question.id%>'><%=@question.votes%></td>
+  <td><h4><%=link_to @question.title, question_path(@question)%></h4></td>
+</tr>

@@ -10,22 +10,19 @@
 
   <h2>Answers:</h2>
 
-
+  <table class = 'answer_list'>
     <%@question.answers.each do |answer|%>
-
-      <button><%=link_to '^', upvote_question_answer_path(@question.id, answer), method: :patch%></button><br>
-      <%=answer.votes%><br>
-      <button><%=link_to 'v', downvote_question_answer_path(@question.id, answer), method: :patch%></button><br>
-      <p>
-        <strong>Title:</strong>
-        <%=answer.title%>
-      </p>
-
-      <p>
-        <strong>Answer:</strong>
-        <%=answer.content%>
-      </p>
+      <tr>
+      <td>
+        <button><%=link_to '^', upvote_question_answer_path(@question.id, answer), method: :patch, remote: true%></button><br>
+        <button><%=link_to 'v', downvote_question_answer_path(@question.id, answer), method: :patch, remote: true%></button>
+      </td>
+        <td id ='avote<%=answer.id%>'><%=answer.votes%></td>
+        <td>Title: <%=answer.title%><br>
+        Content: <%=answer.content%><td>
+      </tr>
     <%end%>
+  </table>
 
 <h2>Your Answer</h2>
 

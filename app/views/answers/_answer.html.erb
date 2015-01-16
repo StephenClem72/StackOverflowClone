@@ -1,0 +1,9 @@
+<tr>
+<td>
+  <button><%=link_to '^', upvote_question_answer_path(@question.id, @answer), remote: true, method: :patch%></button><br>
+  <button><%=link_to 'v', downvote_question_answer_path(@question.id, @answer), remote: true, method: :patch%></button>
+</td>
+  <td id = 'avotes<%=@answer.id%>'><%=@answer.votes%></td>
+  <td>Title: <%=@answer.title%><br>
+  Content: <%=@answer.content%><td>
+</tr>

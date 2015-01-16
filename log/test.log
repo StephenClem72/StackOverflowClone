@@ -2622,3 +2622,17 @@ Redirected to http://test.host/questions/168
 Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
   [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 168]]
   [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (124.7ms)[0m  [1mDROP DATABASE IF EXISTS "dbc_overflow_test"[0m
+  [1m[35m (413.7ms)[0m  CREATE DATABASE "dbc_overflow_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (38.4ms)[0m  CREATE TABLE "answers" ("id" serial primary key, "title" character varying, "content" text, "question_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "votes" integer DEFAULT 0) 
+  [1m[36m (1.4ms)[0m  [1mCREATE  INDEX  "index_answers_on_question_id_and_created_at" ON "answers" USING btree ("question_id", "created_at")[0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_answers_on_question_id" ON "answers" USING btree ("question_id")
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "title" character varying, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "votes" integer DEFAULT 0) [0m
+  [1m[35m (42.9ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150113020800')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150112230300')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150112230402')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
